@@ -8,7 +8,7 @@ pygame.init()
 
 # Константы для экрана
 SCREEN_WIDTH = 500
-SCREEN_HEIGHT = 800
+SCREEN_HEIGHT = 790
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Цветные пузыри")
 
@@ -85,7 +85,7 @@ class Ball(pygame.sprite.Sprite):
         image_size = (40, 40)
 
         # Бонусные шары
-        if random.random() < 0.9:
+        if random.random() < 0.2:
             rand = random.random()
             if rand < 0.33:
                 color = SILVER                
@@ -174,11 +174,11 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and self.rect.left > 0:  
+        if keys[pygame.K_LEFT] and self.rect.left > 3:  
             self.rect.x -= self.speed
-        if keys[pygame.K_RIGHT] and self.rect.right < SCREEN_WIDTH:  
+        if keys[pygame.K_RIGHT] and self.rect.right < SCREEN_WIDTH - 3:  
             self.rect.x += self.speed
-        if keys[pygame.K_UP] and self.rect.top > 0:  
+        if keys[pygame.K_UP] and self.rect.top > 3:  
             self.rect.y -= self.speed
         if keys[pygame.K_DOWN] and self.rect.bottom < SCREEN_HEIGHT:  
             self.rect.y += self.speed
